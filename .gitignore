@@ -13,3 +13,12 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# IDEA
+.idea/
+
+# JavaScript
+node_modules/
+.output/
+dist/
+.nuxt/

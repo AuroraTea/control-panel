@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "gen": "nuxt generate && powershell Move-Item -Path ./.output/public ../server/static/web",
+    "mov": "powershell Move-Item -Path ./.output/public ../server/static/web",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "axios": "^1.2.2",
+    "naive-ui": "^2.34.3",
+    "nuxt": "3.0.0",
+    "sass": "^1.57.1",
+    "unplugin-vue-components": "^0.22.12"
+  }
+}
