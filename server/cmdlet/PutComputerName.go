@@ -28,11 +28,12 @@ func PutComputerName(c *gin.Context) {
 	if err != nil {
 		panic(encoding.ShouldAutoDecode(out))
 	}
-	if bytes.Equal(regexp.MustCompile(`ReturnValue\s*=\s*(\d+)`).FindSubmatch(out)[0], []byte("ReturnValue = 5")) {
+	returnValue := regexp.MustCompile(`ReturnValue\s*=\s*(\d+)`).FindSubmatch(out)[0]
+	if bytes.Equal(returnValue, []byte("ReturnValue = 5")) {
 		c.String(http.StatusInternalServerError, "计算机名修改失败, 可以考虑手动以管理员权限运行")
 		return
 	}
-	if !bytes.Equal(regexp.MustCompile(`ReturnValue\s*=\s*(\d+)`).FindSubmatch(out)[0], []byte("ReturnValue = 0")) {
+	if !bytes.Equal(returnValue, []byte("ReturnValue = 0")) {
 		c.String(http.StatusInternalServerError, "未知错误"+string(encoding.ShouldAutoDecode(out)))
 		return
 	}
