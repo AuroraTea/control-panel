@@ -24,9 +24,9 @@ pnpm gen
 
 ## ToDo
 
-前端现在的核心问题是纠结动态工具页如何实现:
+The core problem on the frontend now is struggling with how to implement dynamic tools pages:
 
-- components + 动态组件
+- components + dynamic components
 - pages + iframe
 
-这决定了整个项目的结构和代码的复用方式, 以及默认值和配置项如何传递.
+这决定了整个项目的结构和代码的复用方式.

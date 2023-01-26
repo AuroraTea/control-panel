@@ -6,7 +6,9 @@ import { listNetworkInterfaces, putNetworkInterfaceIP } from '@/apis'
 const options = ref([{ value: '0', label: '无法获取网卡列表' }])
 const adapter = $ref('')
 
-// 默认值到底由props还是useState还是useFetch传入？ State
+const config = useConfig()
+// TODO: default value
+
 const ip = $ref(['', '', '', ''])
 const mask = $ref(['', '', '', ''])
 const gateway = $ref(['', '', '', ''])

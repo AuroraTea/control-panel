@@ -2,6 +2,7 @@ package main
 
 import (
 	"control2/cmdlet"
+	"control2/config"
 	"control2/static"
 	_ "embed"
 	"github.com/gin-gonic/gin"
@@ -26,6 +27,9 @@ func main() {
 
 	api := r.Group("api")
 
+	api.GET("/config", config.GetConfig)
+	api.PUT("/config", config.PutConfig)
+
 	// TODO: rename API
 	api.GET("/network-interfaces", cmdlet.GetNetAdapter)
 	api.PUT("/network-interface/:networkInterface/ipv4", cmdlet.PutNetworkInterfaceIP)
@@ -38,7 +42,7 @@ func main() {
 		}
 	}()
 
-	_ = r.Run(":5222")
+	_ = r.Run("127.0.0.1:5222")
 }
 
 func CORS() gin.HandlerFunc {

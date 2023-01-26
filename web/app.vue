@@ -1,5 +1,9 @@
 <script setup>
+import { getConfig } from './apis';
 
+const config = useConfig()
+const res = await getConfig()
+if(res.isExist&&res.config) config.value = JSON.parse(res.config)
 </script>
 
 <template>

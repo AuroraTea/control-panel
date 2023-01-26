@@ -1,12 +1,21 @@
 <script setup>
+import { getConfig, putConfig } from '../apis';
+
 const toolsResolved = {
   IPv4 : resolveComponent('IPv4'),
   DeviceName : resolveComponent('DeviceName'),
 }
-const toolsSelected = $ref([
-  'IPv4',
-  'DeviceName'
-])
+
+const config = useConfig()
+const toolsSelected = $ref(config.value.toolsSelected || [])
+
+watch(
+  () => toolsSelected,
+  async () => {
+    console.log(toolsSelected)
+    await putConfig({config: JSON.stringify({toolsSelected: toolsSelected})})
+})
+
 </script>
 
 <template>

@@ -7,3 +7,7 @@ export const listNetworkInterfaces = params => service.get('/network-interfaces'
 export const putNetworkInterfaceIP = (name, params) => service.put(`/network-interface/${name}/ipv4`, params)
 
 export const putComputerName = params => service.put('/computer-name', params)
+
+export const getConfig = () => service.get('/config')
+
+export const putConfig = params => service.put('/config', params)

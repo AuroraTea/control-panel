@@ -1,6 +1,10 @@
 <script setup>
-defineProps(['modelValue'])
+const {modelValue} = defineProps(['modelValue'])
 defineEmits(['update:modelValue'])
+
+modelValue.forEach((item, index, arr) => {
+  if(typeof(item) == 'number') arr[index] = item.toString()
+})
 
 </script>
 
