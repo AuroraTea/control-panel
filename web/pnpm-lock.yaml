@@ -1,15 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@vitejs/plugin-vue': ^4.0.0
-  axios: ^1.2.3
+  axios: ^1.2.2
   naive-ui: ^2.34.3
   nuxt: 3.0.0
   sass: ^1.57.1
   unplugin-vue-components: ^0.22.12
 
 devDependencies:
-  '@vitejs/plugin-vue': 4.0.0
   axios: 1.2.3
   naive-ui: 2.34.3
   nuxt: 3.0.0_sass@1.57.1
@@ -907,14 +905,6 @@ packages:
     dependencies:
       vite: 3.2.5_sass@1.57.1
       vue: 3.2.45
-    dev: true
-
-  /@vitejs/plugin-vue/4.0.0:
-    resolution: {integrity: sha512-e0X4jErIxAB5oLtDqbHvHpJe/uWNkdpYV83AOG2xo2tEVSzCzewgJMtREZM30wXnM5ls90hxiOtAuVU6H5JgbA==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.0.0
-      vue: ^3.2.25
     dev: true
 
   /@vue/babel-helper-vue-transform-on/1.0.2:
