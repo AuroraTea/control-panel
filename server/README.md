@@ -2,6 +2,8 @@
 
 ## Setup
 
+Go 1.18+
+
 ```shell
 go mod download
 ```
@@ -13,6 +15,10 @@ Start the development server on http://localhost:5222
 ```shell
 go build
 ./control2
+
+# or
+
+go run main.go
 ```
 
 ## Production
@@ -20,9 +26,7 @@ go build
 Generate static web and move it to backend static embed:
 
 ```shell
-rsrc -manifest .\control2.exe.manifest -o control2.exe.syso
-go build
-./control2
+go generate
 ```
 
 ## ToDo

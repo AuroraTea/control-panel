@@ -25,3 +25,4 @@ node_modules/
 .output/
 dist/
 .nuxt/
+server/config.json

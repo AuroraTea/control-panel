@@ -10,16 +10,16 @@ import (
 	"os/exec"
 )
 
+//go:generate go install github.com/akavel/rsrc@latest
+//go:generate rsrc -manifest .\control2.exe.manifest -o control2.exe.syso
+//go:generate go build -o control2.exe "-ldflags=-s -w"
+
 func main() {
 	//gin.SetMode(gin.ReleaseMode)
 
 	r := gin.Default()
-	err := r.SetTrustedProxies([]string{"127.0.0.1"})
 	r.Use(gin.Recovery())
 	r.Use(CORS())
-	if err != nil {
-		panic(err)
-	}
 
 	// Static Web Files in '/' Path, Optional
 	r.Use(static.Web())
@@ -42,7 +42,7 @@ func main() {
 		}
 	}()
 
-	_ = r.Run("127.0.0.1:5222")
+	_ = r.Run("127.0.0.1:5222") // for no network access
 }
 
 func CORS() gin.HandlerFunc {
