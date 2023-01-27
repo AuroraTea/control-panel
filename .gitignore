@@ -26,3 +26,4 @@ node_modules/
 dist/
 .nuxt/
 server/config.json
+.pnpm-debug.log
