@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { putComputerName } from '@/apis'
 
 const computerName = ref('')
@@ -7,7 +7,7 @@ const edit = async () => {
   const res = await putComputerName({
     newName: computerName.value,
   })
-  nMessage.success(res)
+  window.nMessage.success(res)
 }
 
 </script>
