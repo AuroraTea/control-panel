@@ -13,4 +13,8 @@ export const putNetworkInterfaceIP = (name: string, params: {
 
 export const putComputerName = (params: {
     newName: string
-}): Promise<string> => service.put('/computer-name', params) 
+}): Promise<string> => service.put('/computer-name', params)
+
+export const getConfig = (): Promise<Record<string, any>> => service.get('/config')
+
+export const putConfig = (params: Record<string, any>): Promise<Record<string, any>> => service.put('/config', params)
