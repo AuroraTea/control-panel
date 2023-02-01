@@ -20,7 +20,7 @@ in /control-panel/server/main.go:18
 
 `//gin.SetMode(gin.ReleaseMode)` => `gin.SetMode(gin.ReleaseMode)`
 
-### 3. Build with a pre-prepared `//go:generate`
+### 3. Build with a pre-prepared `//go:generate`:
 in /control-panel/server/
 
 ```shell
