@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { listNetworkInterfaces, putNetworkInterfaceIP } from '@/apis'
 
 // defineProps(['adapter', 'ip', 'mask', 'gateway'])
@@ -20,7 +20,7 @@ const edit = async () => {
     mask:     mask.join('.'),
     gateway:  gateway.join('.')
   })
-  nMessage.success(res)
+  window.nMessage.success(res)
 }
 
 const refreshOptions = async () => {

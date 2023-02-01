@@ -1,15 +1,15 @@
-<script setup>
-import { getConfig } from './apis';
+<script setup lang="ts">
+import { getConfig } from './apis'
 
 const config = useConfig()
 try {
   const res = await getConfig()
-  if(res.isExist&&res.config) config.value = JSON.parse(res.config)
+  if (res.isExist && res.config) config.value = JSON.parse(res.config)
 } catch (error) {
+  // @ts-ignore
   error.stopPreErr()
   confirm('Backend Error')
 }
-
 </script>
 
 <template>

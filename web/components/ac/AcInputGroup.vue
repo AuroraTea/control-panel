@@ -1,5 +1,10 @@
-<script setup>
-const {modelValue} = defineProps(['modelValue'])
+<script setup lang="ts">
+import { defineProps } from 'vue';
+
+const { modelValue } = defineProps<{
+  modelValue: Array<string | number>
+}>()
+
 defineEmits(['update:modelValue'])
 
 modelValue.forEach((item, index, arr) => {
@@ -13,10 +18,10 @@ modelValue.forEach((item, index, arr) => {
     <template v-for="(item, index) in modelValue">
       {{ index==0 ? '' : '.' }}<n-input
         :value="modelValue[index]"
-        @update:value = "v => modelValue[index] = v"
+        @update:value = "(v:string) => modelValue[index] = v"
         style="text-align:center"
         placeholder=""
-        :allow-input="v => !v || /^\d+$/.test(v)" />
+        :allow-input="(v: string) => !v || /^\d+$/.test(v)" />
     </template>
 
   </n-input-group>

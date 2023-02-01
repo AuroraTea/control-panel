@@ -1,21 +1,20 @@
-<script setup>
-import { getConfig, putConfig } from '../apis';
-
+<script setup lang="ts">
+import { putConfig} from '../apis'
 const toolsResolved = {
-  IPv4 : resolveComponent('IPv4'),
-  DeviceName : resolveComponent('DeviceName'),
+  IPv4: resolveComponent('IPv4'),
+  DeviceName: resolveComponent('DeviceName'),
 }
 
 const config = useConfig()
-const toolsSelected = $ref(config.value.toolsSelected || [])
+// @ts-ignore
+const toolsSelected = $ref<Array<keyof typeof toolsResolved>>(config.value.toolsSelected || [])
 
 watch(
   () => toolsSelected,
   async () => {
     console.log(toolsSelected)
-    await putConfig({config: JSON.stringify({toolsSelected: toolsSelected})})
-})
-
+    await putConfig({ config: JSON.stringify({ toolsSelected: toolsSelected }) })
+  })
 </script>
 
 <template>
@@ -26,7 +25,7 @@ watch(
     placeholder="Choose components"
   />
   <template v-for="i in toolsSelected">
-    <component :is="toolsResolved[i]"/>
+    <component :is="(toolsResolved[i])" />
   </template>
 </template>
 
