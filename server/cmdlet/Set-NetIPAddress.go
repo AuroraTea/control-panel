@@ -7,24 +7,23 @@ import (
 	"os/exec"
 )
 
-func SetIPv4(c *gin.Context) {
-	name := c.DefaultQuery("name", c.Param("networkInterface"))
+type SetIPv4Request struct {
+	NetAdapter string `json:"netAdapter"`
+	IP         string `json:"ip"`
+	Mask       string `json:"mask"`
+	Gateway    string `json:"gateway"`
+}
 
-	var body map[string]any
+func SetIPv4(c *gin.Context) {
+	var body SetIPv4Request
 	err := c.BindJSON(&body)
 	if err != nil {
 		c.String(http.StatusBadRequest, "参数格式错误")
 		return
 	}
-	ip := c.DefaultQuery("ip", body["ip"].(string))
-	mask := c.DefaultQuery("mask", body["mask"].(string))
-	gateway := c.DefaultQuery("gateway", body["gateway"].(string))
-	if name == "" || gateway == "10.210.." || mask == "" || ip == "10.210..254" {
-		c.String(http.StatusBadRequest, "错误: 参数不足")
-		return
-	}
 
-	cmd := exec.Command("netsh", "interface", "ip", "set", "address", name, "static", ip, mask, gateway)
+	cmd := exec.Command("netsh",
+		"interface", "ip", "set", "address", body.NetAdapter, "static", body.IP, body.Mask, body.Gateway)
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
@@ -32,5 +31,5 @@ func SetIPv4(c *gin.Context) {
 	if err != nil {
 		panic(stdout.String())
 	}
-	c.String(http.StatusOK, "网卡"+name+"的ipv4配置修改成功")
+	c.String(http.StatusOK, "网卡"+body.NetAdapter+"的ipv4配置修改成功")
 }

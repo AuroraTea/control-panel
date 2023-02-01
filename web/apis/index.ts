@@ -5,7 +5,7 @@ import service from './service'
 export const getNetAdapters = (): Promise<Array<string>> => service.get('/net-adapters')
 
 export const setIPv4 = (params: {
-    name: string,
+    netAdapter: string,
     ip: string,
     mask: string,
     gateway: string

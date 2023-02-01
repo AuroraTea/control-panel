@@ -11,18 +11,21 @@ import (
 	"syscall"
 )
 
+type SetComputerNameRequest struct {
+	NewName string `json:"newName"`
+}
+
 // SetComputerName 修改计算机名
 func SetComputerName(c *gin.Context) {
-	var body map[string]any
+	var body SetComputerNameRequest
 	err := c.BindJSON(&body)
 	if err != nil {
 		c.String(http.StatusBadRequest, "参数格式错误")
 		return
 	}
-	newName := c.DefaultQuery("newName", body["newName"].(string))
 
 	cmd := exec.Command("wmic")
-	cmdLine := `computersystem where name="$computername" rename ` + newName
+	cmdLine := `computersystem where name="$computername" rename ` + body.NewName
 	cmd.SysProcAttr = &syscall.SysProcAttr{CmdLine: "/c " + os.ExpandEnv(cmdLine)}
 	out, err := cmd.CombinedOutput()
 	if err != nil {

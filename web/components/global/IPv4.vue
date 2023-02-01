@@ -4,7 +4,7 @@ import { getNetAdapters, setIPv4 } from '@/apis'
 // defineProps(['adapter', 'ip', 'mask', 'gateway'])
 
 const options = ref([{ value: '0', label: '无法获取网卡列表' }])
-const adapter = $ref('')
+const netAdapter = $ref('')
 
 const config = useConfig()
 // TODO: default value
@@ -15,10 +15,10 @@ const gateway = $ref(['', '', '', ''])
 
 const edit = async () => {
   const res = await setIPv4({
-    name:     adapter,
-    ip:       ip.join('.'),
-    mask:     mask.join('.'),
-    gateway:  gateway.join('.')
+    netAdapter: netAdapter,
+    ip:         ip.join('.'),
+    mask:       mask.join('.'),
+    gateway:    gateway.join('.')
   })
   window.nMessage.success(res)
 }
@@ -36,7 +36,7 @@ const refreshOptions = async () => {
 
 <template>
     <div class="label">网卡名称</div>
-    <n-select v-model:value="adapter" :options="options" @click="refreshOptions" />
+    <n-select v-model:value="netAdapter" :options="options" @click="refreshOptions" />
     <div class="label">IP地址</div>
     <AcInputGroup v-model="ip" />
     <div class="label">子网掩码</div>
