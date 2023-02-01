@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { getConfig } from './apis';
+import { getConfig } from './apis'
+
 const config = useConfig()
 try {
   const res = await getConfig()
@@ -10,7 +11,6 @@ try {
   confirm('Backend Error')
 }
 </script>
-
 
 <template>
   <n-message-provider>
