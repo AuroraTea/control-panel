@@ -12,7 +12,7 @@ import (
 )
 
 type SetComputerNameRequest struct {
-	NewName string `json:"newName"`
+	NewName string `json:"newName" binding:"required"`
 }
 
 // SetComputerName 修改计算机名

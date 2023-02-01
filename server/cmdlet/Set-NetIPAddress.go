@@ -2,23 +2,24 @@ package cmdlet
 
 import (
 	"bytes"
+	"control2/util/encoding"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os/exec"
 )
 
 type SetIPv4Request struct {
-	NetAdapter string `json:"netAdapter"`
-	IP         string `json:"ip"`
-	Mask       string `json:"mask"`
-	Gateway    string `json:"gateway"`
+	NetAdapter string `json:"netAdapter" binding:"required"`
+	IP         string `json:"ip" binding:"required,ipv4"`
+	Mask       string `json:"mask" binding:"required,ipv4"`
+	Gateway    string `json:"gateway" binding:"required,ipv4"`
 }
 
 func SetIPv4(c *gin.Context) {
 	var body SetIPv4Request
 	err := c.BindJSON(&body)
 	if err != nil {
-		c.String(http.StatusBadRequest, "参数格式错误")
+		c.String(http.StatusBadRequest, err.Error())
 		return
 	}
 
@@ -29,7 +30,7 @@ func SetIPv4(c *gin.Context) {
 	cmd.Stderr = &stderr
 	err = cmd.Run()
 	if err != nil {
-		panic(stdout.String())
+		panic(encoding.ShouldAutoDecode(stdout.Bytes()))
 	}
-	c.String(http.StatusOK, "网卡"+body.NetAdapter+"的ipv4配置修改成功")
+	c.String(http.StatusOK, body.NetAdapter+"'s 'IPv4 configuration changed successfully")
 }
