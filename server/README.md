@@ -21,14 +21,6 @@ go build
 go run main.go
 ```
 
-## Production
-
-Generate static web and move it to backend static embed:
-
-```shell
-go generate
-```
-
 ## ToDo
 
 - Customised recovery middleware.

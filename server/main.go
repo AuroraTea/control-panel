@@ -30,19 +30,20 @@ func main() {
 	api.GET("/config", config.GetConfig)
 	api.PUT("/config", config.SetConfig)
 
-	// TODO: rename API
 	api.GET("/net-adapters", cmdlet.GetNetAdapters)
 	api.PUT("/ipv4", cmdlet.SetIPv4)
 	api.PUT("/computer-name", cmdlet.SetComputerName)
 
-	go func() {
-		err := exec.Command(`cmd`, `/c`, `start`, `http://localhost:5222/`).Run()
-		if err != nil {
-			panic(err)
-		}
-	}()
+	if gin.Mode() == gin.ReleaseMode {
+		go func() {
+			err := exec.Command(`cmd`, `/c`, `start`, `http://localhost:5222/`).Run()
+			if err != nil {
+				panic(err)
+			}
+		}()
+	}
 
-	_ = r.Run("127.0.0.1:5222") // for no network access
+	_ = r.Run("127.0.0.1:5222")
 }
 
 func CORS() gin.HandlerFunc {
