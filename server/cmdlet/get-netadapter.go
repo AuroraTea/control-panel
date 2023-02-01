@@ -6,8 +6,8 @@ import (
 	"net/http"
 )
 
-// GetNetAdapter 列出所有网卡的名字(可供其他shell命令使用的名字)
-func GetNetAdapter(c *gin.Context) {
+// GetNetAdapters 列出所有网卡的名字(可供其他shell命令使用的名字)
+func GetNetAdapters(c *gin.Context) {
 	interfaces, err := net.Interfaces()
 	if err != nil {
 		panic(err)

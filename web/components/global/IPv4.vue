@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { listNetworkInterfaces, putNetworkInterfaceIP } from '@/apis'
+import { getNetAdapters, setIPv4 } from '@/apis'
 
 // defineProps(['adapter', 'ip', 'mask', 'gateway'])
 
@@ -14,7 +14,7 @@ const mask = $ref(['', '', '', ''])
 const gateway = $ref(['', '', '', ''])
 
 const edit = async () => {
-  const res = await putNetworkInterfaceIP(adapter, {
+  const res = await setIPv4({
     name:     adapter,
     ip:       ip.join('.'),
     mask:     mask.join('.'),
@@ -25,7 +25,7 @@ const edit = async () => {
 
 const refreshOptions = async () => {
   console.log('refreshOptions');
-  const res = await listNetworkInterfaces()
+  const res = await getNetAdapters()
   options.value = res.map(item => ({
       value: item,
       label: item,

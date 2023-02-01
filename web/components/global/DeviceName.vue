@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { putComputerName } from '@/apis'
+import { setComputerName } from '@/apis'
 
 const computerName = ref('')
 
 const edit = async () => {
-  const res = await putComputerName({
+  const res = await setComputerName({
     newName: computerName.value,
   })
   window.nMessage.success(res)

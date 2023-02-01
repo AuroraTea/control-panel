@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { putConfig} from '../apis'
+import { setConfig} from '../apis'
 const toolsResolved = {
   IPv4: resolveComponent('IPv4'),
   DeviceName: resolveComponent('DeviceName'),
@@ -13,7 +13,7 @@ watch(
   () => toolsSelected,
   async () => {
     console.log(toolsSelected)
-    await putConfig({ config: JSON.stringify({ toolsSelected: toolsSelected }) })
+    await setConfig({ config: JSON.stringify({ toolsSelected: toolsSelected }) })
   })
 </script>
 

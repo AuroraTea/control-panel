@@ -28,12 +28,12 @@ func main() {
 	api := r.Group("api")
 
 	api.GET("/config", config.GetConfig)
-	api.PUT("/config", config.PutConfig)
+	api.PUT("/config", config.SetConfig)
 
 	// TODO: rename API
-	api.GET("/network-interfaces", cmdlet.GetNetAdapter)
-	api.PUT("/network-interface/:networkInterface/ipv4", cmdlet.PutNetworkInterfaceIP)
-	api.PUT("/computer-name", cmdlet.PutComputerName)
+	api.GET("/net-adapters", cmdlet.GetNetAdapters)
+	api.PUT("/ipv4", cmdlet.SetIPv4)
+	api.PUT("/computer-name", cmdlet.SetComputerName)
 
 	go func() {
 		err := exec.Command(`cmd`, `/c`, `start`, `http://localhost:5222/`).Run()

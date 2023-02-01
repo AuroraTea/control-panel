@@ -25,12 +25,12 @@ func GetConfig(c *gin.Context) {
 	})
 }
 
-type PutConfigRequest struct {
+type SetConfigRequest struct {
 	Config string `json:"config"`
 }
 
-func PutConfig(c *gin.Context) {
-	var body PutConfigRequest
+func SetConfig(c *gin.Context) {
+	var body SetConfigRequest
 	err := c.BindJSON(&body)
 	err = ioutil.WriteFile("config.json", []byte(body.Config), 0644)
 	if err != nil {

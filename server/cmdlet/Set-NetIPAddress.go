@@ -7,7 +7,7 @@ import (
 	"os/exec"
 )
 
-func PutNetworkInterfaceIP(c *gin.Context) {
+func SetIPv4(c *gin.Context) {
 	name := c.DefaultQuery("name", c.Param("networkInterface"))
 
 	var body map[string]any

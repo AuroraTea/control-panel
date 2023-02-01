@@ -11,8 +11,8 @@ import (
 	"syscall"
 )
 
-// PutComputerName 修改计算机名
-func PutComputerName(c *gin.Context) {
+// SetComputerName 修改计算机名
+func SetComputerName(c *gin.Context) {
 	var body map[string]any
 	err := c.BindJSON(&body)
 	if err != nil {
