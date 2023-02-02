@@ -20,7 +20,7 @@ props.modelValue.forEach((item, index, arr) => {
       {{ index == 0 ? '' : '.' }}
       <n-input
         :value="modelValue[index].toString()"
-        @update:value="(v:string) => modelValue[index] = v"
+        @update:value="(v: string) => modelValue[index] = v"
         style="text-align: center"
         placeholder=""
         :allow-input="(v: string) => !v || /^\d+$/.test(v)"
