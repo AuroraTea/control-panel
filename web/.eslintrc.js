@@ -11,7 +11,6 @@ module.exports = defineConfig({
     '@nuxtjs/eslint-config-typescript',
     'plugin:vue/vue3-recommended',
     'prettier',
-    'plugin:prettier/recommended',
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -28,6 +27,22 @@ module.exports = defineConfig({
   ],
   rules: {
     'vue/no-multiple-template-root': 'off', // 允许 vue3 之后 template 下有多个组件
+    'vue/first-attribute-linebreak': [
+      'error',
+      {
+        "singleline": "beside",
+        "multiline": "below"
+      }
+    ],
+    'vue/max-attributes-per-line': [
+      'error', 
+      {
+        "singleline": 2, // 单行最多两个
+        "multiline": {
+          "max": 1, // 多行每行只能一个 attr
+        }
+      }
+    ],
     'vue/script-setup-uses-vars': 'error',
     'vue/no-reserved-component-names': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
@@ -46,8 +61,10 @@ module.exports = defineConfig({
     'no-unused-vars': 'off',
     'space-before-function-paren': 'off',
     'comma-dangle': ['error', 'always-multiline'],
+    'arrow-parens': ['error', "as-needed"], // 箭头函数单参数不需要括号
+    'nonblock-statement-body-position': ['error', 'beside'],
     quotes: ['warn', 'single'],
-    curly: ['error', 'multi-line', 'consistent'],
+    curly: ['error', 'multi-line'],
     semi: ['error', 'never'],
     'space-before-blocks': ['error', 'always'],
     'spaced-comment': [
@@ -73,7 +90,6 @@ module.exports = defineConfig({
     'vue/attributes-order': 'off',
     'vue/one-component-per-file': 'off',
     'vue/html-closing-bracket-newline': 'off',
-    'vue/max-attributes-per-line': 'off',
     'vue/multiline-html-element-content-newline': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/attribute-hyphenation': 'off',

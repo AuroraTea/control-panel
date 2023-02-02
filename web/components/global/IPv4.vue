@@ -26,7 +26,7 @@ const edit = async () => {
 const refreshOptions = async () => {
   console.log('refreshOptions')
   const res = await getNetAdapters()
-  options.value = res.map((item) => ({
+  options.value = res.map(item => ({
     value: item,
     label: item,
   }))
