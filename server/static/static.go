@@ -6,6 +6,7 @@ import (
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"io/fs"
+	"mime"
 	"net/http"
 	"strings"
 )
@@ -45,12 +46,15 @@ func (e *EmbedFileSystem) Exists(prefix string, filepath string) bool {
 }
 
 func Web() gin.HandlerFunc {
+	_ = mime.AddExtensionType(".js", "application/javascript")
+	_ = mime.AddExtensionType(".mjs", "application/javascript")
+	_ = mime.AddExtensionType(".css", "text/css")
+
 	webSub, err := fs.Sub(web, "web")
 	if err != nil {
 		panic("fs.Sub(embed.FS)失败" + err.Error())
 	}
 	return static.Serve("/", NewEmbedFileSystem(webSub))
-
 }
 
 //r.Use(static.ServeRoot("/", "web")) // 不用embed
