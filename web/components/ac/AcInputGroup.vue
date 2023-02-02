@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const props = defineProps<{
-  modelValue: (string | number)[]
+  modelValue:(string | number)[]
 }>()
 
-defineEmits<{
+type EmitType = {
   (e: 'update:modelValue'): void
-}>()
+}
+defineEmits<EmitType>()
 
 props.modelValue.forEach((item, index, arr) => {
   if (typeof item === 'number') arr[index] = item.toString()

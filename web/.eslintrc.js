@@ -7,7 +7,10 @@ module.exports = defineConfig({
     browser: true,
     es2021: true,
   },
-  extends: ['@nuxtjs/eslint-config-typescript', 'plugin:vue/vue3-recommended', 'prettier'],
+  extends: [
+    '@nuxtjs/eslint-config-typescript',
+    'plugin:vue/vue3-recommended',
+  ],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -21,13 +24,10 @@ module.exports = defineConfig({
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'vue/no-multiple-template-root': 'off', // 允许 vue3 之后 template 下有多个组件
-    'vue/first-attribute-linebreak': [
-      'error',
-      {
-        singleline: 'beside',
-        multiline: 'below',
-      },
-    ],
+    'vue/html-closing-bracket-newline': ['error', {
+      "singleline": "never",
+      "multiline": "always"
+    }],
     'vue/max-attributes-per-line': [
       'error',
       {
@@ -69,6 +69,7 @@ module.exports = defineConfig({
       },
     ],
     'no-var': 'error',
+    'max-len': ['error', 100],
     indent: [
       'error',
       2,
@@ -83,7 +84,6 @@ module.exports = defineConfig({
     'prefer-promise-reject-errors': 'off',
     'vue/attributes-order': 'off',
     'vue/one-component-per-file': 'off',
-    'vue/html-closing-bracket-newline': 'off',
     'vue/multiline-html-element-content-newline': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/attribute-hyphenation': 'off',
