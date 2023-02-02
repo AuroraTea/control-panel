@@ -25,8 +25,8 @@ module.exports = defineConfig({
   rules: {
     'vue/no-multiple-template-root': 'off', // 允许 vue3 之后 template 下有多个组件
     'vue/html-closing-bracket-newline': ['error', {
-      "singleline": "never",
-      "multiline": "always"
+      singleline: 'never',
+      multiline: 'always',
     }],
     'vue/max-attributes-per-line': [
       'error',
