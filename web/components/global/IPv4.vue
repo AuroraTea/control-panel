@@ -37,10 +37,9 @@ const refreshOptions = async () => {
   <div class="ipv4-layout">
     <div class="label">网卡名称</div>
     <n-select
-      v-model:value="netAdapter"
-      :options="options"
-      @click="refreshOptions"
-    />
+v-model:value="netAdapter"
+:options="options"
+@click="refreshOptions" />
     <div class="label">IP地址</div>
     <AcInputGroup v-model="ip" />
     <div class="label">子网掩码</div>

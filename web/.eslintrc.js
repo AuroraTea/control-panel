@@ -5,13 +5,9 @@ module.exports = defineConfig({
   root: true,
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
-  extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:vue/vue3-recommended',
-    'prettier',
-  ],
+  extends: ['@nuxtjs/eslint-config-typescript', 'plugin:vue/vue3-recommended', 'prettier'],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -19,29 +15,27 @@ module.exports = defineConfig({
     sourceType: 'module',
     jsxPragma: 'React',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
-  plugins: [
-    'vue', '@typescript-eslint'
-  ],
+  plugins: ['vue', '@typescript-eslint'],
   rules: {
     'vue/no-multiple-template-root': 'off', // 允许 vue3 之后 template 下有多个组件
     'vue/first-attribute-linebreak': [
       'error',
       {
-        "singleline": "beside",
-        "multiline": "below"
-      }
+        singleline: 'beside',
+        multiline: 'below',
+      },
     ],
     'vue/max-attributes-per-line': [
-      'error', 
+      'error',
       {
-        "singleline": 2, // 单行最多两个
-        "multiline": {
-          "max": 1, // 多行每行只能一个 attr
-        }
-      }
+        singleline: 2, // 单行最多两个
+        multiline: {
+          max: 1, // 多行每行只能一个 attr
+        },
+      },
     ],
     'vue/script-setup-uses-vars': 'error',
     'vue/no-reserved-component-names': 'off',
@@ -61,7 +55,7 @@ module.exports = defineConfig({
     'no-unused-vars': 'off',
     'space-before-function-paren': 'off',
     'comma-dangle': ['error', 'always-multiline'],
-    'arrow-parens': ['error', "as-needed"], // 箭头函数单参数不需要括号
+    'arrow-parens': ['error', 'as-needed'], // 箭头函数单参数不需要括号
     'nonblock-statement-body-position': ['error', 'beside'],
     quotes: ['warn', 'single'],
     curly: ['error', 'multi-line'],
@@ -122,8 +116,8 @@ module.exports = defineConfig({
         '**/app.{js,ts,vue}',
       ],
       rules: {
-        'vue/multi-word-component-names': 'off'
-      }
-    }
-  ]
+        'vue/multi-word-component-names': 'off',
+      },
+    },
+  ],
 })

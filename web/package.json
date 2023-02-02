@@ -9,6 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "cd .. && husky install web/.husky",
+    "format": "prettier --write app.vue pages apis components composables",
     "lint": "eslint --fix --ext .js,.ts,.vue --config .eslintrc.js apis pages components composables",
     "lint:lint-staged": "lint-staged -c ./.husky/.lintstagedrc"
   },

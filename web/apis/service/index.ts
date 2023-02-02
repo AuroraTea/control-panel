@@ -13,7 +13,9 @@ service.interceptors.response.use(
   res => res.data,
   err => {
     let isPreErr = true
-    const stopPreErr = () => { isPreErr = false }
+    const stopPreErr = () => {
+      isPreErr = false
+    }
 
     setTimeout(() => {
       if (isPreErr) {
