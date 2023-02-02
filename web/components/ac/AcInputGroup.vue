@@ -16,7 +16,7 @@ props.modelValue.forEach((item, index, arr) => {
 <template>
   <n-input-group style="gap: 2px">
     <template v-for="(item, index) in modelValue" :key="index">
-      {{ index == 0 ? '' : '.' }}
+      <span>{{ index === 0 ? '' : '.' }}</span>
       <n-input
         :value="modelValue[index].toString()"
         @update:value="(v: string) => modelValue[index] = v"
