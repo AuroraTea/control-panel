@@ -1,0 +1,26 @@
+{
+  "apis/**/*.{js,jsx,ts,tsx,vue}": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "components/**/*.{js,jsx,ts,tsx,vue}": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "pages/**/*.{js,jsx,ts,tsx,vue}": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "composables/**/*.{js,jsx,ts,tsx,vue}": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "nuxt.config.ts": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "app.vue": [
+    "prettier --write",
+    "eslint --fix"
+  ]
+}

@@ -5,24 +5,24 @@ const service = axios.create({
   timeout: 2200,
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   },
 })
 
 service.interceptors.response.use(
-  res => res.data,
-  err =>{
+  (res) => res.data,
+  (err) => {
     let isPreErr = true
-    const stopPreErr = () => isPreErr = false
+    const stopPreErr = () => (isPreErr = false)
 
     setTimeout(() => {
-        if (isPreErr) {
-          console.log(err)
-          window.nMessage.error(err?.response?.data || 'Backend Error')
-        }
+      if (isPreErr) {
+        console.log(err)
+        window.nMessage.error(err?.response?.data || 'Backend Error')
+      }
     })
     return Promise.reject({ ...err, stopPreErr })
-  }
+  },
 )
 
 export default service

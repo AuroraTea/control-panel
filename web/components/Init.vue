@@ -8,5 +8,3 @@ window.nMessage = useMessage()
 // const res = await getConfig()
 // if(res.isExist) config.value = JSON.parse(res.config)
 </script>
-
-<template></template>

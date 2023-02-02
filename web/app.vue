@@ -4,7 +4,9 @@ import { getConfig } from './apis'
 const config = useConfig()
 try {
   const res = await getConfig()
-  if (res.isExist && res.config) config.value = JSON.parse(res.config)
+  if (res.isExist && res.config) {
+    config.value = JSON.parse(res.config)
+  }
 } catch (error) {
   // @ts-ignore
   error.stopPreErr()
@@ -14,7 +16,7 @@ try {
 
 <template>
   <n-message-provider>
-    <Init/>
+    <Init />
     <div class="app">
       <NuxtPage />
     </div>
@@ -22,12 +24,13 @@ try {
 </template>
 
 <style lang="scss" scoped>
-.app{
+.app {
   width: 375px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  .label{
+
+  .label {
     width: 80px;
   }
 }

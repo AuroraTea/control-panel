@@ -9,7 +9,6 @@ const edit = async () => {
   })
   window.nMessage.success(res)
 }
-
 </script>
 
 <template>
@@ -18,5 +17,4 @@ const edit = async () => {
   <n-button @click="edit">修改</n-button>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

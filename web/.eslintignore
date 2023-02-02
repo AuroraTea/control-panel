@@ -1,0 +1,4 @@
+nuxt.config.ts
+build
+/node_modules/*
+.nuxt

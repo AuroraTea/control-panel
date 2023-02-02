@@ -1,32 +1,30 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps } from 'vue'
 
-const { modelValue } = defineProps<{
+const props = defineProps<{
   modelValue: Array<string | number>
 }>()
 
 defineEmits(['update:modelValue'])
 
-modelValue.forEach((item, index, arr) => {
-  if(typeof(item) == 'number') arr[index] = item.toString()
+props.modelValue.forEach((item, index, arr) => {
+  if (typeof item === 'number') arr[index] = item.toString()
 })
-
 </script>
 
 <template>
-  <n-input-group style="gap: 2px;">
-    <template v-for="(item, index) in modelValue">
-      {{ index==0 ? '' : '.' }}<n-input
+  <n-input-group style="gap: 2px">
+    <template v-for="(item, index) in modelValue" :key="index">
+      {{ index == 0 ? '' : '.' }}
+      <n-input
         :value="modelValue[index]"
-        @update:value = "(v:string) => modelValue[index] = v"
-        style="text-align:center"
+        @update:value="(v:string) => modelValue[index] = v"
+        style="text-align: center"
         placeholder=""
-        :allow-input="(v: string) => !v || /^\d+$/.test(v)" />
+        :allow-input="(v: string) => !v || /^\d+$/.test(v)"
+      />
     </template>
-
   </n-input-group>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

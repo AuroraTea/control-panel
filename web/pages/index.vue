@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { setConfig} from '../apis'
+import { setConfig } from '../apis'
 const toolsResolved = {
   IPv4: resolveComponent('IPv4'),
   DeviceName: resolveComponent('DeviceName'),
@@ -7,28 +7,21 @@ const toolsResolved = {
 
 const config = useConfig()
 // @ts-ignore
-const toolsSelected = $ref<Array<keyof typeof toolsResolved>>(config.value.toolsSelected || [])
+const toolsSelected = $ref<(keyof typeof toolsResolved)[]>(config.value.toolsSelected || [])
 
 watch(
   () => toolsSelected,
   async () => {
     console.log(toolsSelected)
-    await setConfig({ config: JSON.stringify({ toolsSelected: toolsSelected }) })
-  })
+    await setConfig({ config: JSON.stringify({ toolsSelected }) })
+  },
+)
 </script>
 
 <template>
   <NuxtLink to="network/ipv4">修改IP(IPv4)</NuxtLink>
-  <n-dynamic-input
-    v-model:value="toolsSelected"
-    show-sort-button
-    placeholder="Choose components"
-  />
-  <template v-for="i in toolsSelected">
-    <component :is="(toolsResolved[i])" />
-  </template>
+  <n-dynamic-input v-model:value="toolsSelected" show-sort-button placeholder="Choose components" />
+  <component v-for="(i, index) in toolsSelected" :key="index" :is="toolsResolved[i]" />
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
