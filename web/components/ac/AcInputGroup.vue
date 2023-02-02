@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
 const props = defineProps<{
-  modelValue: Array<string | number>
+  modelValue: (string | number)[]
 }>()
 
-defineEmits(['update:modelValue'])
+defineEmits<{
+  (e: 'update:modelValue'): void
+}>()
 
 props.modelValue.forEach((item, index, arr) => {
-  if (typeof item === 'number') arr[index] = item.toString()
+  if (typeof item === 'number') {
+    arr[index] = item.toString()
+  }
 })
 </script>
 
@@ -17,7 +19,7 @@ props.modelValue.forEach((item, index, arr) => {
     <template v-for="(item, index) in modelValue" :key="index">
       {{ index == 0 ? '' : '.' }}
       <n-input
-        :value="modelValue[index]"
+        :value="modelValue[index].toString()"
         @update:value="(v:string) => modelValue[index] = v"
         style="text-align: center"
         placeholder=""
