@@ -10,8 +10,8 @@ const service = axios.create({
 })
 
 service.interceptors.response.use(
-  (res) => res.data,
-  (err) => {
+  res => res.data,
+  err => {
     let isPreErr = true
     const stopPreErr = () => (isPreErr = false)
 

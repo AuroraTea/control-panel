@@ -8,9 +8,7 @@ defineEmits<{
 }>()
 
 props.modelValue.forEach((item, index, arr) => {
-  if (typeof item === 'number') {
-    arr[index] = item.toString()
-  }
+  if (typeof item === 'number') arr[index] = item.toString()
 })
 </script>
 
