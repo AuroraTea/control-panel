@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import { setConfig} from '../apis'
+import { setConfig } from '../apis'
 const toolsResolved = {
   IPv4: resolveComponent('IPv4'),
   DeviceName: resolveComponent('DeviceName'),
 }
 
 const config = useConfig()
-// @ts-ignore
-const toolsSelected = $ref<Array<keyof typeof toolsResolved>>(config.value.toolsSelected || [])
+const toolsSelected = $ref<(keyof typeof toolsResolved)[]>(
+  // @ts-ignore
+  config.value.toolsSelected || [],
+)
 
 watch(
   () => toolsSelected,
   async () => {
     console.log(toolsSelected)
-    await setConfig({ config: JSON.stringify({ toolsSelected: toolsSelected }) })
-  })
+    await setConfig({ config: JSON.stringify({ toolsSelected }) })
+  },
+)
 </script>
 
 <template>
@@ -24,11 +27,11 @@ watch(
     show-sort-button
     placeholder="Choose components"
   />
-  <template v-for="i in toolsSelected">
-    <component :is="(toolsResolved[i])" />
-  </template>
+  <component
+    v-for="(i, index) in toolsSelected"
+    :key="index"
+    :is="toolsResolved[i]"
+  />
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

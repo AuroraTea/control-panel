@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+# husky 会从 git 根目录启动，但是又要找到 package.json，所以要进 web 目录
+cd ./web/
+npm run lint:lint-staged

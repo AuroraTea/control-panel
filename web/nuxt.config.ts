@@ -1,4 +1,5 @@
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -13,8 +14,20 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [
+      AutoImport({
+        dts: true,
+        eslintrc: {
+          enabled: true,
+        },
+        imports: [
+          'vue',
+          {
+            'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
+          },
+        ],
+      }),
       Components({
-        resolvers: [NaiveUiResolver()]
+        resolvers: [NaiveUiResolver()],
       }),
     ],
     optimizeDeps: {

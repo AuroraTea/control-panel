@@ -1,0 +1,20 @@
+{
+  "apis/**/*.{js,jsx,ts,tsx,vue}": [
+    "eslint --fix"
+  ],
+  "components/**/*.{js,jsx,ts,tsx,vue}": [
+    "eslint --fix"
+  ],
+  "pages/**/*.{js,jsx,ts,tsx,vue}": [
+    "eslint --fix"
+  ],
+  "composables/**/*.{js,jsx,ts,tsx,vue}": [
+    "eslint --fix"
+  ],
+  "nuxt.config.ts": [
+    "eslint --fix"
+  ],
+  "app.vue": [
+    "eslint --fix"
+  ]
+}
