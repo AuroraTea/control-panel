@@ -6,9 +6,9 @@ export const getNetAdapters = (): Promise<Array<string>> => service.get('/net-ad
 
 export const setIPv4 = (params: {
   netAdapter: string
-  ip:         string
-  mask:       string
-  gateway:    string
+  ip: string
+  mask: string
+  gateway: string
 }): Promise<string> => service.put('/ipv4', params)
 
 export const setComputerName =
