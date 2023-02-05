@@ -14,7 +14,6 @@ const toolsSelected = $ref<(keyof typeof toolsResolved)[]>(
 watch(
   () => toolsSelected,
   async () => {
-    console.log(toolsSelected)
     await setConfig({ config: JSON.stringify({ toolsSelected }) })
   },
 )

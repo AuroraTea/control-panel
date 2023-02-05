@@ -19,7 +19,6 @@ service.interceptors.response.use(
 
     setTimeout(() => {
       if (isPreErr) {
-        console.log(err)
         window.nMessage.error(err?.response?.data || 'Backend Error')
       }
     })
