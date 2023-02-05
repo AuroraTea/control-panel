@@ -17,6 +17,7 @@ jobs:
               with:
                   ref: ${{ github.head_ref }}
                   fetch-depth: 0
+                  token: ${{ secrets.GH_TOKEN }}
             - uses: pnpm/action-setup@v2
               with:
                   version: latest
