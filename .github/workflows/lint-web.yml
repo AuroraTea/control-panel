@@ -31,13 +31,14 @@ jobs:
             - name: Run lint
               run: pnpm run lint
             - name: Commit files
+              continue-on-error: true
               run: |
                   git config --local user.email "github-actions[bot]@users.noreply.github.com"
                   git config --local user.name "github-actions[bot]"
                   git commit -a -m "style: lint"
             - name: Push changes
               uses: ad-m/github-push-action@master
-              continue-on-error: true
+              if: ${{ !failure() }}
               with:
                   branch: ${{ github.head_ref }}
                   directory: "web"
