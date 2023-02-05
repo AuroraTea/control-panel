@@ -37,6 +37,7 @@ jobs:
                   git commit -a -m "style: lint"
             - name: Push changes
               uses: ad-m/github-push-action@master
+              continue-on-error: true
               with:
                   branch: ${{ github.head_ref }}
                   directory: "web"
