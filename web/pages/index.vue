@@ -23,9 +23,7 @@ watch(
 <template>
   <NuxtLink to="network/ipv4">修改IP(IPv4)</NuxtLink>
   <n-dynamic-input
-    v-model:value="toolsSelected"
-    show-sort-button
-    placeholder="Choose components"
+    v-model:value="toolsSelected" show-sort-button placeholder="Choose components"
   />
   <component
     v-for="(i, index) in toolsSelected"
