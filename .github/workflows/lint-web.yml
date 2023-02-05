@@ -10,10 +10,13 @@ jobs:
         timeout-minutes: 60
         runs-on: ubuntu-latest
         defaults:
-          run:
-            working-directory: 'web'
+            run:
+                working-directory: "web"
         steps:
             - uses: actions/checkout@v3
+              with:
+                  ref: ${{ github.head_ref }}
+                  fetch-depth: 0
             - uses: pnpm/action-setup@v2
               with:
                   version: latest
@@ -21,9 +24,19 @@ jobs:
               with:
                   node-version: 16
                   cache: "pnpm"
-                  cache-dependency-path: '**/pnpm-lock.yaml'
+                  cache-dependency-path: "**/pnpm-lock.yaml"
             - name: Install dependencies
               run: |
                   pnpm install
             - name: Run lint
               run: pnpm run lint:lint-staged
+            - name: Commit files
+              run: |
+                  git config --local user.email "github-actions[bot]@users.noreply.github.com"
+                  git config --local user.name "github-actions[bot]"
+                  git commit -a -m "style: lint"
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                  branch: ${{ github.head_ref }}
+                  directory: "web"
