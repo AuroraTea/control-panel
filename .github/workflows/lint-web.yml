@@ -6,12 +6,12 @@ on:
     pull_request:
         branches: [main]
 jobs:
-    test:
+    lint:
         timeout-minutes: 60
         runs-on: ubuntu-latest
         defaults:
-            run:
-                working-directory: web
+          run:
+            working-directory: 'web'
         steps:
             - uses: actions/checkout@v3
             - uses: pnpm/action-setup@v2
@@ -21,6 +21,7 @@ jobs:
               with:
                   node-version: 16
                   cache: "pnpm"
+                  cache-dependency-path: '**/pnpm-lock.yaml'
             - name: Install dependencies
               run: |
                   pnpm install
