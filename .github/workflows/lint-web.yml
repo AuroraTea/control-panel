@@ -42,5 +42,4 @@ jobs:
               if: ${{ steps.commit.outcome == 'success' }}
               with:
                   branch: ${{ github.head_ref }}
-                  directory: "web"
                   github_token: ${{ secrets.GITHUB_TOKEN }}
